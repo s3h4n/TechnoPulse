@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:layout_marginTop="16dp"
+    app:cardCornerRadius="8dp"
+    app:cardBackgroundColor="#F2F2F2"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical">
+
+        <!-- EditText inside the card -->
+        <EditText
+            android:id="@+id/etField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:hint="Placeholder"
+            android:textSize="16sp"
+            android:inputType="text"
+            android:padding="0dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+</merge>

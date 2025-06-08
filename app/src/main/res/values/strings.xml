@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Techno Pulse</string>
+
+    <!--    Auth   -->
+    <string name="btn_login">Login</string>
+    <string name="btn_login_alt">Already a User? Login</string>
+    <string name="btn_register">Create an Account</string>
+    <string name="inp_username_text">Username</string>
+    <string name="inp_password_text">Password</string>
+    <string name="inp_confirm_password_text">Confirm Password</string>
+    <string name="inp_email_text">Email Address</string>
+    <string name="login_heading">Login to account</string>
+    <string name="login_subheading">Please continue to login to your account.</string>
+    <string name="register_heading">Create an account</string>
+    <string name="register_subheading">Please continue to create a new account.</string>
 </resources>
