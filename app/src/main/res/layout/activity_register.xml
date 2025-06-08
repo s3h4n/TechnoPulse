@@ -1,16 +1,19 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/formScroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/surface_full"
-    android:padding="24dp">
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="24dp">
 
         <!-- Heading -->
         <LinearLayout
@@ -40,7 +43,6 @@
                 android:text="@string/register_subheading"
                 android:textColor="@color/muted"
                 android:textSize="16sp" />
-
         </LinearLayout>
 
         <!-- Input fields -->
@@ -61,6 +63,7 @@
                 app:placeholderTextColor="@color/onSurface">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text" />
@@ -79,6 +82,7 @@
                 app:placeholderTextColor="@color/onSurface">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />
@@ -97,11 +101,11 @@
                 app:placeholderTextColor="@color/onSurface">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <!-- Email input -->
             <com.google.android.material.textfield.TextInputLayout
@@ -114,9 +118,10 @@
                 app:placeholderTextColor="@color/onSurface">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 

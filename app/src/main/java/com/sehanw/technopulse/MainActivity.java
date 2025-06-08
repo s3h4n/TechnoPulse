@@ -1,5 +1,6 @@
 package com.sehanw.technopulse;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 public class MainActivity extends BaseActivity {
@@ -7,6 +8,16 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+
+        // simple logic: always treat user as “not logged in”
+        boolean isLoggedIn = false;
+
+        // choose next screen
+        Class<?> next = isLoggedIn
+                ? NewsFeedActivity.class
+                : LoginActivity.class;
+
+        startActivity(new Intent(this, next));
+        finish();
     }
 }
