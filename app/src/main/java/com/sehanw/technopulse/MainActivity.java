@@ -10,11 +10,11 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         // simple logic: always treat user as “not logged in”
-        boolean isLoggedIn = false;
+        boolean isLoggedIn = true;
 
         // choose next screen
         Class<?> next = isLoggedIn
-                ? NewsFeedActivity.class
+                ? HomeActivity.class
                 : LoginActivity.class;
 
         startActivity(new Intent(this, next));

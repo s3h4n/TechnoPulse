@@ -27,16 +27,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".OnboardingActivity" />
-
         <activity
             android:name=".LoginActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".RegisterActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity android:name=".NewsFeedActivity" />
-        <activity android:name=".NewsAcademicActivity" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".NewsArticleActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".DevInfoActivity" />
