@@ -1,6 +1,8 @@
 package com.sehanw.technopulse;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,6 +12,14 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class ProfileActivity extends BaseActivity {
 
@@ -26,6 +36,13 @@ public class ProfileActivity extends BaseActivity {
         setupEditSheet();
         setupLogoutSheet();
         setupClickListeners();
+
+        // Load current user data
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            tvUsername.setText(user.getDisplayName());
+            tvEmail.setText(user.getEmail());
+        }
     }
 
     private void initViews() {
@@ -91,9 +108,9 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private void performLogout() {
-        // your logout logic here
+        FirebaseAuth.getInstance().signOut();
         showToast("Logged out successfully");
-        // e.g., clear session, navigate to login screen
+        startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
 
@@ -114,9 +131,52 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private void updateProfile(String username, String email) {
-        tvUsername.setText(username);
-        tvEmail.setText(email);
-        showToast("Profile updated successfully");
+        showProgressDialog("Updating profile...");
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Update email
+        user.updateEmail(email)
+                .addOnCompleteListener(emailTask -> {
+                    if (emailTask.isSuccessful()) {
+                        // Update profile (display name)
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(username)
+                                .build();
+
+                        user.updateProfile(profileUpdates)
+                                .addOnCompleteListener(profileTask -> {
+                                    dismissProgressDialog();
+                                    if (profileTask.isSuccessful()) {
+                                        tvUsername.setText(username);
+                                        tvEmail.setText(email);
+                                        showToast("Profile updated successfully");
+
+                                        // Optional: Update Firestore if you're using it
+                                        updateFirestoreUserData(user.getUid(), username, email);
+                                    } else {
+                                        showToast("Failed to update profile: " + profileTask.getException());
+                                    }
+                                });
+                    } else {
+                        dismissProgressDialog();
+                        showToast("Failed to update email: " + emailTask.getException());
+                    }
+                });
+    }
+
+    private void updateFirestoreUserData(String userId, String username, String email) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("username", username);
+        updates.put("email", email);
+
+        db.collection("users").document(userId)
+                .update(updates)
+                .addOnFailureListener(e -> {
+                    // Log the error but don't show to user since core profile was updated
+                    Log.e("ProfileActivity", "Failed to update Firestore", e);
+                });
     }
 
     private void showToast(String msg) {

@@ -1,5 +1,6 @@
 package com.sehanw.technopulse;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -13,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class BaseActivity extends AppCompatActivity {
+
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,21 @@ public class BaseActivity extends AppCompatActivity {
                 getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) {
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        }
+    }
+
+    protected void showProgressDialog(String message) {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setCancelable(false);
+        }
+        progressDialog.setMessage(message);
+        progressDialog.show();
+    }
+
+    protected void dismissProgressDialog() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
         }
     }
 }

@@ -53,18 +53,18 @@
             android:layout_marginTop="48dp"
             android:orientation="vertical">
 
-            <!-- Username input -->
+            <!-- Email input -->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/uUsername"
+                android:id="@+id/uEmail"
                 style="?attr/textInputFilledStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/inp_username_text"
+                android:hint="@string/inp_email_text"
                 app:errorEnabled="true"
                 app:placeholderTextColor="@color/onSurface">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputUsername"
+                    android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text" />
