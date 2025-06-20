@@ -26,6 +26,7 @@
                     android:id="@+id/header_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/news_article_thumbnail"
                     android:scaleType="centerCrop"
                     android:src="@drawable/academic_top100_ranking"
                     tools:src="@drawable/academic_top100_ranking" />
@@ -59,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/display"
-                    android:text="New Course on Artificial Intelligence Approved for Next Semester"
+                    android:text="@string/news_article_title_ai_course"
                     android:textColor="@color/onSurface"
                     android:textSize="28sp"
                     android:textStyle="bold"
@@ -77,24 +78,24 @@
                         android:id="@+id/category_chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Academic"
+                        android:text="@string/news_category_academic"
                         android:textAllCaps="true"
                         android:textColor="@color/primary"
                         android:textSize="13sp"
-                        tools:text="Acadmic" />
+                        tools:text="Academic" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="8dp"
-                        android:text="•"
+                        android:text="@string/news_meta_separator"
                         android:textColor="@color/onSurface" />
 
                     <TextView
                         android:id="@+id/date_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mar 15, 2025"
+                        android:text="@string/news_date_placeholder"
                         android:textColor="@color/onSurface"
                         android:textSize="14sp"
                         tools:text="Mar 15, 2025" />
@@ -117,9 +118,8 @@
                     android:id="@+id/content_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:justificationMode="inter_word"
                     android:lineSpacingMultiplier="1.5"
-                    android:text="The Faculty of Computing has confirmed the introduction of a new undergraduate course titled Foundations of Artificial Intelligence, set to commence in the upcoming semester. The course aims to provide students with a structured introduction to core AI concepts, covering machine learning, neural networks, natural language processing, and ethical considerations."
+                    android:text="@string/news_content_ai_course_details"
                     android:textColor="@color/onSurface"
                     android:textSize="16sp"
                     tools:text="Article content goes here..." />

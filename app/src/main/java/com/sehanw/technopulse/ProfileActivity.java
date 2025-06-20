@@ -21,12 +21,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+/**
+ * Activity for managing user profile information, including editing details and logging out.
+ * Provides options to update username and email, and handles user authentication state.
+ */
 public class ProfileActivity extends BaseActivity {
 
+    // UI Elements
     private TextView tvUsername, tvEmail;
     private Button backButton, btnEditAccount, btnLogout;
+    // Dialogs for editing profile and confirming logout
     private BottomSheetDialog editSheetDialog, logoutSheetDialog;
 
+    // Lifecycle Methods
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +52,7 @@ public class ProfileActivity extends BaseActivity {
         }
     }
 
+    // Initialization Methods
     private void initViews() {
         backButton = findViewById(R.id.back_button);
         tvUsername = findViewById(R.id.tv_username);
@@ -53,6 +61,7 @@ public class ProfileActivity extends BaseActivity {
         btnLogout = findViewById(R.id.btnLogout);        // trigger for logout bottom sheet
     }
 
+    // Setup Methods for UI interactions
     private void setupClickListeners() {
         backButton.setOnClickListener(v -> finish());
 
@@ -61,6 +70,9 @@ public class ProfileActivity extends BaseActivity {
         btnLogout.setOnClickListener(v -> logoutSheetDialog.show());
     }
 
+    /**
+     * Sets up the bottom sheet dialog for editing user profile information.
+     */
     private void setupEditSheet() {
         editSheetDialog = new BottomSheetDialog(this);
         View sheetView = getLayoutInflater()
@@ -69,15 +81,19 @@ public class ProfileActivity extends BaseActivity {
                         false);
         editSheetDialog.setContentView(sheetView);
 
+        // Initialize views within the bottom sheet
         TextInputEditText etUsername = sheetView.findViewById(R.id.inputUsername);
         TextInputEditText etEmail = sheetView.findViewById(R.id.inputEmail);
         Button btnCancel = sheetView.findViewById(R.id.btnCancel);
         Button btnSave = sheetView.findViewById(R.id.btnSave);
 
+        // Pre-fill fields when dialog is shown
         editSheetDialog.setOnShowListener(d -> {
             etUsername.setText(tvUsername.getText().toString());
             etEmail.setText(tvEmail.getText().toString());
         });
+
+        // Handle button clicks
         btnCancel.setOnClickListener(v -> editSheetDialog.dismiss());
         btnSave.setOnClickListener(v -> {
             String u = etUsername.getText().toString().trim();
@@ -89,6 +105,9 @@ public class ProfileActivity extends BaseActivity {
         });
     }
 
+    /**
+     * Sets up the bottom sheet dialog for confirming user logout.
+     */
     private void setupLogoutSheet() {
         logoutSheetDialog = new BottomSheetDialog(this);
         View view = getLayoutInflater()
@@ -97,10 +116,12 @@ public class ProfileActivity extends BaseActivity {
                         false);
         logoutSheetDialog.setContentView(view);
 
+        // Initialize views within the bottom sheet
         Button cancel = view.findViewById(R.id.btnCancelLogout);
         Button confirm = view.findViewById(R.id.btnConfirmLogout);
 
         cancel.setOnClickListener(v -> logoutSheetDialog.dismiss());
+        // Perform logout and dismiss dialog on confirmation
         confirm.setOnClickListener(v -> {
             performLogout();
             logoutSheetDialog.dismiss();
@@ -108,6 +129,7 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private void performLogout() {
+        // Sign out from Firebase and navigate to LoginActivity
         FirebaseAuth.getInstance().signOut();
         showToast("Logged out successfully");
         startActivity(new Intent(this, LoginActivity.class));
@@ -115,6 +137,13 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private boolean validateInput(@NonNull String username, @NonNull String email) {
+        /**
+         * Validates the username and email inputs.
+         *
+         * @param username The username to validate.
+         * @param email    The email to validate.
+         * @return True if inputs are valid, false otherwise.
+         */
         if (username.isEmpty()) {
             showToast("Username cannot be empty");
             return false;
@@ -130,6 +159,12 @@ public class ProfileActivity extends BaseActivity {
         return true;
     }
 
+    /**
+     * Updates the user's profile information in Firebase Authentication and Firestore.
+     *
+     * @param username The new username.
+     * @param email    The new email.
+     */
     private void updateProfile(String username, String email) {
         showProgressDialog("Updating profile...");
 
@@ -148,15 +183,19 @@ public class ProfileActivity extends BaseActivity {
                                 .addOnCompleteListener(profileTask -> {
                                     dismissProgressDialog();
                                     if (profileTask.isSuccessful()) {
+                                        // Update UI and show success message
                                         tvUsername.setText(username);
                                         tvEmail.setText(email);
                                         showToast("Profile updated successfully");
 
                                         // Optional: Update Firestore if you're using it
                                         updateFirestoreUserData(user.getUid(), username, email);
+
+                                        // Handle profile update failure
                                     } else {
                                         showToast("Failed to update profile: " + profileTask.getException());
                                     }
+                                    // Handle email update failure
                                 });
                     } else {
                         dismissProgressDialog();
@@ -165,6 +204,13 @@ public class ProfileActivity extends BaseActivity {
                 });
     }
 
+    /**
+     * Updates user data in Firestore. This is optional and used if user data is also stored in Firestore.
+     *
+     * @param userId   The ID of the user.
+     * @param username The new username.
+     * @param email    The new email.
+     */
     private void updateFirestoreUserData(String userId, String username, String email) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Map<String, Object> updates = new HashMap<>();

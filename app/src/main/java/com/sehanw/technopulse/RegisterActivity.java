@@ -18,14 +18,21 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Activity for user registration.
+ * Handles input validation, Firebase Authentication, and Firestore data saving.
+ */
 public class RegisterActivity extends BaseActivity {
 
+    // Firebase instances
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
+    // UI elements for input fields and their layouts
     private TextInputLayout usernameLayout, passwordLayout, confirmLayout, emailLayout;
     private TextInputEditText usernameInput, passwordInput, confirmInput, emailInput;
 
+    // Called when the activity is first created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +41,7 @@ public class RegisterActivity extends BaseActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        // Bind layouts (matching activity_register.xml) :contentReference[oaicite:0]{index=0}
+        // Bind layouts (matching activity_register.xml)
         usernameLayout = findViewById(R.id.uUsername);
         passwordLayout = findViewById(R.id.uPassword);
         confirmLayout = findViewById(R.id.uConfirmPassword);
@@ -46,10 +53,11 @@ public class RegisterActivity extends BaseActivity {
         confirmInput = findViewById(R.id.inputConfirmPassword);
         emailInput = findViewById(R.id.inputEmail);
 
+        // Bind buttons
         Button registerButton = findViewById(R.id.btnRegister);
         Button loginButton = findViewById(R.id.btnLogin);
 
-        // Clear errors immediately on edit
+        // TextWatcher to clear errors when text is changed
         TextWatcher clearErrorWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int st, int b, int c) {
@@ -72,6 +80,7 @@ public class RegisterActivity extends BaseActivity {
         confirmInput.addTextChangedListener(clearErrorWatcher);
         emailInput.addTextChangedListener(clearErrorWatcher);
 
+        // Set click listener for the register button
         registerButton.setOnClickListener(view -> {
             String username = usernameInput.getText().toString().trim();
             String password = passwordInput.getText().toString().trim();
@@ -83,9 +92,19 @@ public class RegisterActivity extends BaseActivity {
             }
         });
 
+        // Set click listener for the login button (finishes current activity)
         loginButton.setOnClickListener(view -> finish());
     }
 
+    /**
+     * Validates user registration input.
+     *
+     * @param username        The username entered by the user.
+     * @param email           The email entered by the user.
+     * @param password        The password entered by the user.
+     * @param confirmPassword The confirmed password entered by the user.
+     * @return True if all inputs are valid, false otherwise.
+     */
     private boolean validateRegistration(String username, String email,
                                          String password, String confirmPassword) {
         if (username.isEmpty()) {
@@ -115,8 +134,16 @@ public class RegisterActivity extends BaseActivity {
         return true;
     }
 
+    /**
+     * Registers a new user with Firebase Authentication.
+     * Updates user profile and saves user data to Firestore.
+     *
+     * @param username The username for the new user.
+     * @param email    The email for the new user.
+     * @param password The password for the new user.
+     */
     private void registerUser(String username, String email, String password) {
-        showProgressDialog("Creating account...");
+        showProgressDialog("Creating account..."); // Show progress dialog
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
@@ -129,14 +156,14 @@ public class RegisterActivity extends BaseActivity {
                                 .addOnCompleteListener(profileTask -> {
                                     if (profileTask.isSuccessful()) {
                                         saveUserToFirestore(user.getUid(), username, email);
-                                    } else {
+                                    } else { // Profile update failed
                                         dismissProgressDialog();
                                         Toast.makeText(this,
                                                 "Failed to update profile: " + profileTask.getException(),
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                    } else {
+                    } else { // User creation failed
                         dismissProgressDialog();
                         Toast.makeText(this,
                                 "Registration failed: " + task.getException().getMessage(),
@@ -145,6 +172,13 @@ public class RegisterActivity extends BaseActivity {
                 });
     }
 
+    /**
+     * Saves user data to Firestore.
+     *
+     * @param userId   The unique ID of the user.
+     * @param username The username of the user.
+     * @param email    The email of the user.
+     */
     private void saveUserToFirestore(String userId, String username, String email) {
         Map<String, Object> user = new HashMap<>();
         user.put("username", username);
@@ -155,14 +189,14 @@ public class RegisterActivity extends BaseActivity {
                 .set(user)
                 .addOnCompleteListener(task -> {
                     dismissProgressDialog();
-                    if (task.isSuccessful()) {
+                    if (task.isSuccessful()) { // Firestore save successful
                         Toast.makeText(this,
                                 "Registration successful!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(this, HomeActivity.class));
                         finish();
-                    } else {
+                    } else { // Firestore save failed
                         Toast.makeText(this,
-                                "Failed to save user data: " + task.getException(),
+                                "Failed to save user data: " + task.getException().getMessage(),
                                 Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -13,6 +13,74 @@
     <string name="login_subheading">Please continue to login to your account.</string>
     <string name="register_heading">Create an account</string>
     <string name="register_subheading">Please continue to create a new account.</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--  Home  -->
+    <string name="home_top_stories_title">Top stories</string>
+    <string name="home_chip_latest">Latest</string>
+    <string name="home_chip_academic">Academic</string>
+    <string name="home_chip_sports">Sports</string>
+    <string name="home_chip_events">Events</string>
+    <string name="home_filter_title_latest_news">Latest news</string>
+
+    <!-- News Article -->
+    <string name="news_article_title_ai_course">New Course on Artificial Intelligence Approved for
+        Next Semester
+    </string>
+    <string name="news_category_academic">Academic</string>
+    <string name="news_meta_separator">•</string>
+    <string name="news_date_placeholder">Mar 15, 2025</string>
+    <string name="news_content_ai_course_details">The Faculty of Computing has confirmed the
+        introduction of a new undergraduate course titled Foundations of Artificial Intelligence,
+        set to commence in the upcoming semester. The course aims to provide students with a
+        structured introduction to core AI concepts, covering machine learning, neural networks,
+        natural language processing, and ethical considerations.
+    </string>
+    <string name="news_content_placeholder">Article content goes here…</string>
+    <string name="news_article_thumbnail">News article thumbnail</string>
+
+    <!--  Dev Info  -->
+    <string name="dev_info_title">About</string>
+    <string name="dev_info_version_number">v 1.0.0</string>
+    <string name="dev_info_profile_image_description">Profile photo of Developer</string>
+    <string name="dev_info_developed_by">Developed by</string>
+    <string name="dev_info_developer_name">W.M.S.R. Weerasekara</string>
+    <string name="dev_info_developer_id">(2020T/00922)</string>
+    <string name="dev_info_app_description">This app is for students and staff at the university. It
+        helps them quickly see news about sports, studies, and campus events. The goal is to keep
+        everyone up to date in an easy way.
+    </string>
+
+    <!--  Edit Profile  -->
+    <string name="edit_profile_title">Edit Profile</string>
+    <string name="edit_profile_hint_username">Username</string>
+    <string name="edit_profile_hint_email">Email</string>
+    <string name="edit_profile_button_cancel">CANCEL</string>
+    <string name="edit_profile_button_save">SAVE</string>
+
+    <!--  Log Out  -->
+    <string name="logout_title">Log Out?</string>
+    <string name="logout_prompt">Are you sure you want to log out from Technopulse?</string>
+    <string name="logout_button_cancel">CANCEL</string>
+    <string name="logout_button_confirm">YES</string>
+
+    <!-- News Card -->
+    <string name="news_item_meta_separator">•</string>
+
+    <!--  Top Stories Card  -->
+    <string name="top_story_thumbnail_description">Thumbnail</string>
+    <string name="top_story_category_placeholder_sports">Sports</string>
+    <string name="meta_separator_dot">•</string>
+    <string name="top_story_time_placeholder">6 hours ago</string>
+    <string name="top_story_title_placeholder">Alexander wears modified helmet in road races</string>
+
+    <!-- My Profile -->
+    <string name="profile_label_username">Username</string>
+    <string name="profile_label_email">Email address</string>
+    <string name="profile_button_edit_account">Edit Account</string>
+    <string name="profile_title">My Profile</string>
+    <string name="profile_username_placeholder">sehanw.</string>
+    <string name="profile_email_placeholder">sehan@example.com</string>
+    <string name="profile_button_logout">Logout</string>
+    <string name="profile_email_icon">Profile email icon</string>
+    <string name="profile_username_icon">Profile username icon</string>
 </resources>

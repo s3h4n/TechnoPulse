@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Main screen container - handles system window insets -->
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,6 +10,7 @@
     android:fitsSystemWindows="true"
     tools:context=".HomeActivity">
 
+    <!-- Scrollable content area -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,13 +21,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Header Section -->
+            <!-- Top app bar with profile and about buttons -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:padding="16dp">
 
+                <!-- Profile button -->
                 <Button
                     android:id="@+id/menu_profile"
                     style="?attr/materialIconButtonFilledStyle"
@@ -32,13 +36,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:padding="16dp"
-                    app:icon="@drawable/ic_person" />
+                    app:icon="@drawable/ic_menu" />
 
+                <!-- Spacer to push about button to end -->
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
+                <!-- About button -->
                 <Button
                     android:id="@+id/menu_about"
                     style="?attr/materialIconButtonOutlinedStyle"
@@ -48,7 +54,7 @@
                     app:icon="@drawable/ic_info" />
             </LinearLayout>
 
-            <!-- Top Stories Section -->
+            <!-- Featured stories section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,11 +66,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/display"
-                    android:text="Top stories"
+                    android:text="@string/home_top_stories_title"
                     android:textColor="@color/onSurface"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
+                <!-- Featured stories carousel -->
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/top_stories_viewpager"
                     android:layout_width="match_parent"
@@ -72,7 +79,7 @@
                     android:layout_marginBottom="16dp" />
             </LinearLayout>
 
-            <!-- Category Filter Section -->
+            <!-- Category filter chips -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,68 +95,58 @@
                     app:selectionRequired="true"
                     app:singleSelection="true">
 
+                    <!-- Latest news chip (selected by default) -->
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_latest"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checkable="true"
                         android:checked="true"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="Latest"
+                        android:text="@string/home_chip_latest"
                         android:textColor="@color/text_chip_state_list"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         app:chipStrokeColor="@color/outline"
                         app:chipStrokeWidth="1dp" />
 
+                    <!-- Academic news chip -->
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_academic"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checkable="true"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="Academic"
+                        android:text="@string/home_chip_academic"
                         android:textColor="@color/text_chip_state_list"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         app:chipStrokeColor="@color/outline"
                         app:chipStrokeWidth="1dp" />
 
+                    <!-- Sports news chip -->
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_sports"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checkable="true"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="Sports"
+                        android:text="@string/home_chip_sports"
                         android:textColor="@color/text_chip_state_list"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         app:chipStrokeColor="@color/outline"
                         app:chipStrokeWidth="1dp" />
 
+                    <!-- Events chip -->
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_events"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checkable="true"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="Events"
+                        android:text="@string/home_chip_events"
                         android:textColor="@color/text_chip_state_list"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         app:chipStrokeColor="@color/outline"
                         app:chipStrokeWidth="1dp" />
-
                 </com.google.android.material.chip.ChipGroup>
-
             </HorizontalScrollView>
 
-            <!-- News List Section -->
+            <!-- News list section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -162,29 +159,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/display"
-                    android:text="Latest news"
+                    android:text="@string/home_filter_title_latest_news"
                     android:textColor="@color/onSurface"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
+                <!-- News items list -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/news_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
                     tools:listitem="@layout/item_news" />
-
             </LinearLayout>
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
-
-    <!--    <com.google.android.material.navigation.NavigationView-->
-    <!--        android:id="@+id/sidebar"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        app:headerLayout="@layout/drawer_header"-->
-    <!--        app:menu="@menu/drawer_menu" />-->
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -7,31 +7,44 @@ import android.widget.TextView;
 
 import com.sehanw.technopulse.models.NewsItem;
 
+/**
+ * Activity for displaying a full news article.
+ * Handles data retrieval, view initialization, and user interactions.
+ */
 public class NewsArticleActivity extends BaseActivity {
 
+    // UI elements
     private Button backButton;
+
+    // News item details
+    private NewsItem newsItem;
     private ImageView headerImage;
     private TextView titleTextView;
     private TextView dateTextView;
     private TextView categoryChip;
     private TextView contentTextView;
 
-    private NewsItem newsItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_article);
 
+        // Retrieve NewsItem from intent
         newsItem = (NewsItem) getIntent().getSerializableExtra("news_item");
 
+        // Initialize UI and data
         initViews();
         setupData();
         setupClickListeners();
     }
 
+    /**
+     * Initializes views by finding them from the layout.
+     */
     private void initViews() {
         backButton = findViewById(R.id.back_button);
+        // Article details
         headerImage = findViewById(R.id.header_image);
         titleTextView = findViewById(R.id.title_text);
         dateTextView = findViewById(R.id.date_text);
@@ -39,6 +52,9 @@ public class NewsArticleActivity extends BaseActivity {
         contentTextView = findViewById(R.id.content_text);
     }
 
+    /**
+     * Sets up data for the views from the NewsItem.
+     */
     private void setupData() {
         if (newsItem != null) {
             headerImage.setImageResource(newsItem.getImageResource());
@@ -46,15 +62,26 @@ public class NewsArticleActivity extends BaseActivity {
             dateTextView.setText(newsItem.getDate());
             categoryChip.setText(newsItem.getCategory());
 
+            // Load detailed content
             String content = getDetailedContent(newsItem);
             contentTextView.setText(content);
         }
     }
 
+    /**
+     * Sets up click listeners for interactive elements.
+     */
     private void setupClickListeners() {
         backButton.setOnClickListener(v -> finish());
     }
 
+    /**
+     * Retrieves detailed content based on the news item's title.
+     * In a real application, this would fetch content from a source.
+     *
+     * @param item The NewsItem for which to get content.
+     * @return A string containing the detailed content.
+     */
     private String getDetailedContent(NewsItem item) {
         if (item.getTitle().contains("Artificial Intelligence")) {
             return "The Faculty of Computing has confirmed the introduction of a new undergraduate course titled Foundations of Artificial Intelligence, set to commence in the upcoming semester. The course aims to provide students with a structured introduction to core AI concepts, covering machine learning, neural networks, natural language processing, and ethical considerations.\n\n" +

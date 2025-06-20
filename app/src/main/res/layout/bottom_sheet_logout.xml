@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/display"
-        android:text="Log Out?"
+        android:text="@string/logout_title"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -27,10 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:alpha=".7"
         android:fontFamily="@font/inter"
-        android:text="Are you sure you want to log out from Technopulse?"
+        android:text="@string/logout_prompt"
         android:textAlignment="center"
+        android:textColor="@color/muted"
         android:textSize="16sp" />
 
     <!-- Buttons -->
@@ -41,6 +41,7 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
+        <!-- Cancel -->
         <Button
             android:id="@+id/btnCancelLogout"
             style="@style/Widget.Material3.Button.OutlinedButton"
@@ -48,9 +49,10 @@
             android:layout_height="56dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
-            android:text="CANCEL"
+            android:text="@string/logout_button_cancel"
             android:textAllCaps="true" />
 
+        <!-- Confirm -->
         <Button
             android:id="@+id/btnConfirmLogout"
             style="@style/Widget.Material3.Button"
@@ -58,7 +60,7 @@
             android:layout_height="56dp"
             android:layout_marginStart="4dp"
             android:layout_weight="1"
-            android:text="YES"
+            android:text="@string/logout_button_confirm"
             android:textAllCaps="true" />
     </LinearLayout>
 </LinearLayout>

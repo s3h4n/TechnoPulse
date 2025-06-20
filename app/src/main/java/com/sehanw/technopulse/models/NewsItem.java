@@ -2,6 +2,10 @@ package com.sehanw.technopulse.models;
 
 import java.io.Serializable;
 
+/**
+ * Model class representing a news item with category, title, date, and image.
+ * Implements Serializable for passing between components.
+ */
 public class NewsItem implements Serializable {
     private String category;
     private String title;

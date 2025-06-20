@@ -1,102 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    android:background="@color/surface"
     android:clickable="true"
     android:focusable="true"
+    app:cardBackgroundColor="@color/surface"
     app:cardCornerRadius="8dp"
-    app:cardElevation="0dp">
+    app:cardElevation="0dp"
+    app:strokeColor="@color/outline">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="0dp">
+        android:layout_height="wrap_content">
 
         <!-- News Image -->
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/news_image"
             android:layout_width="128dp"
             android:layout_height="90dp"
-            app:cardCornerRadius="0dp"
-            app:cardElevation="0dp">
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.None"
+            tools:src="@drawable/academic_top100_ranking" />
 
-            <ImageView
-                android:id="@+id/news_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                tools:src="@drawable/article_placeholder" />
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- News Content -->
-        <LinearLayout
+        <!-- Title -->
+        <TextView
+            android:id="@+id/news_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingStart="16dp"
-            android:paddingEnd="8dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/inter"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLines="2"
+            android:textColor="@color/onSurface"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/news_image"
+            app:layout_constraintTop_toTopOf="@id/news_image"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="University Rises in Latest QS World Rankings..." />
 
-            <!-- Title -->
-            <TextView
-                android:id="@+id/news_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:ellipsize="end"
-                android:fontFamily="@font/inter"
-                android:lineSpacingMultiplier="1.2"
-                android:maxLines="2"
-                android:text="University Rises in Latest QS World Rankings..."
-                android:textColor="@color/onSurface"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:text="University Rises in Latest QS World Rankings..." />
+        <!-- Category -->
+        <TextView
+            android:id="@+id/news_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/inter"
+            android:textAllCaps="true"
+            android:textColor="@color/primary"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@id/news_image"
+            app:layout_constraintStart_toStartOf="@id/news_title"
+            app:layout_constraintTop_toBottomOf="@id/news_title"
+            tools:text="Academic" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <!-- Category -->
-                <TextView
-                    android:id="@+id/news_category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter"
-                    android:text="Academic"
-                    android:textAllCaps="true"
-                    android:textColor="@color/primary"
-                    android:textSize="11sp"
-                    tools:text="Academic" />
+        <!-- Separator -->
+        <TextView
+            android:id="@+id/dot_separator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:text="@string/news_item_meta_separator"
+            android:textColor="@color/muted"
+            app:layout_constraintBaseline_toBaselineOf="@id/news_category"
+            app:layout_constraintStart_toEndOf="@id/news_category" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="4dp"
-                    android:alpha=".5"
-                    android:text="•" />
+        <!-- Date -->
+        <TextView
+            android:id="@+id/news_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter"
+            android:textColor="@color/muted"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/news_category"
+            app:layout_constraintStart_toEndOf="@id/dot_separator"
+            tools:text="Mar 15, 2025" />
 
-                <!-- Date -->
-                <TextView
-                    android:id="@+id/news_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:alpha=".7"
-                    android:fontFamily="@font/inter"
-                    android:text="Mar 15, 2025"
-                    android:textColor="@color/onSurface"
-                    android:textSize="12sp"
-                    tools:text="Mar 15, 2025" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

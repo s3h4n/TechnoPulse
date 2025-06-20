@@ -6,8 +6,16 @@ import com.sehanw.technopulse.models.NewsItem;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Repository for accessing news data.
+ * Provides methods to retrieve dummy news items and top stories.
+ */
 public class NewsDataRepository {
-
+    /**
+     * Retrieves a list of dummy news items.
+     *
+     * @return A list of {@link NewsItem} objects.
+     */
     public static List<NewsItem> getDummyNewsData() {
         List<NewsItem> newsList = new ArrayList<>();
 
@@ -114,6 +122,13 @@ public class NewsDataRepository {
         return newsList;
     }
 
+    /**
+     * Retrieves a specified number of top stories from a list of all news items.
+     *
+     * @param allNews The list of all news items.
+     * @param limit   The maximum number of top stories to retrieve.
+     * @return A list of top stories, limited by the specified count.
+     */
     public static List<NewsItem> getTopStories(List<NewsItem> allNews, int limit) {
         return new ArrayList<>(allNews.subList(0, Math.min(limit, allNews.size())));
     }

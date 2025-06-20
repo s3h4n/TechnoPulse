@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:fontFamily="@font/display"
-            android:text="Edit Profile"
+            android:text="@string/edit_profile_title"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint="Username"
+            android:hint="@string/edit_profile_hint_username"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:hint="Email"
+            android:hint="@string/edit_profile_hint_email"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -69,15 +69,17 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
+            <!-- Cancel -->
             <Button
                 android:id="@+id/btnCancel"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_weight="1"
-                android:text="CANCEL"
+                android:text="@string/edit_profile_button_cancel"
                 android:textAllCaps="true" />
 
+            <!-- Confirm -->
             <Button
                 android:id="@+id/btnSave"
                 style="@style/Widget.Material3.Button"
@@ -85,7 +87,7 @@
                 android:layout_height="56dp"
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:text="SAVE"
+                android:text="@string/edit_profile_button_save"
                 android:textAllCaps="true" />
         </LinearLayout>
 
