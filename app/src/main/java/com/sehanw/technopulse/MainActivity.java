@@ -9,10 +9,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // simple logic: always treat user as “not logged in”
         boolean isLoggedIn = true;
 
-        // choose next screen
         Class<?> next = isLoggedIn
                 ? HomeActivity.class
                 : LoginActivity.class;

@@ -37,7 +37,6 @@
         <activity android:name=".NewsArticleActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".DevInfoActivity" />
-        <activity android:name=".SidebarActivity" />
     </application>
 
 </manifest>

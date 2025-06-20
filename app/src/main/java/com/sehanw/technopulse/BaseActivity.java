@@ -24,9 +24,7 @@ public class BaseActivity extends AppCompatActivity {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             View current = getCurrentFocus();
             if (current instanceof EditText) {
-                // Find the view actually under the touch
                 View touched = findTouchedView((int) ev.getRawX(), (int) ev.getRawY());
-                // Only hide if it’s not an EditText
                 if (!(touched instanceof TextInputEditText)) {
                     clearKeyboard(current);
                 }

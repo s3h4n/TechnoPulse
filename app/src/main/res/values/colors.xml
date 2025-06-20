@@ -6,8 +6,10 @@
     <color name="primary">#FF400AE0</color>
     <color name="onPrimary">#FFFFFFFF</color>
     <color name="background">#FFFFFFFF</color>
+    <color name="backgroundMuted">#FFEFEFEF</color>
     <color name="onBackground">#FF212121</color>
     <color name="surface">#FFFFFFFF</color>
+    <color name="surfaceMuted">#FFFAFAFA</color>
     <color name="onSurface">#FF212121</color>
     <color name="error">#FFB00020</color>
     <color name="onError">#FFFFFFFF</color>

@@ -13,4 +13,6 @@
     <string name="login_subheading">Please continue to login to your account.</string>
     <string name="register_heading">Create an account</string>
     <string name="register_subheading">Please continue to create a new account.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

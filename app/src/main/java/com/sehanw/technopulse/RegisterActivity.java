@@ -25,7 +25,6 @@ public class RegisterActivity extends BaseActivity {
             String confirmPassword = confirmInput.getText().toString();
             String email = emailInput.getText().toString();
 
-            //  TODO: Register Logic
         });
 
         loginButton.setOnClickListener(view -> {

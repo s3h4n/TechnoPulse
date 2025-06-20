@@ -21,7 +21,6 @@ public class LoginActivity extends BaseActivity {
             String username = usernameInput.getText().toString();
             String password = passwordInput.getText().toString();
 
-            //  TODO: Login Logic
         });
 
         registerButton.setOnClickListener(view -> {
