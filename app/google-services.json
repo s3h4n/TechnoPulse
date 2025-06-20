@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "503483183399",
+    "project_id": "techno-pulse-uoc",
+    "storage_bucket": "techno-pulse-uoc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503483183399:android:2ce75f64671ca193ff7902",
+        "android_client_info": {
+          "package_name": "com.sehanw.technopulse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwEnnhBk4SEMakeuUjgwqNxuH6fJZRJkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

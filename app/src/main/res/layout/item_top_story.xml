@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="4dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Background Image -->
+        <ImageView
+            android:id="@+id/story_background_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/top_story_thumbnail_description"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/academic_top100_ranking" />
+
+        <!-- Dark Overlay Gradient -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_overlay" />
+
+        <!-- Content Overlay -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Other -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp">
+
+                <!-- Category -->
+                <TextView
+                    android:id="@+id/story_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:text="@string/top_story_category_placeholder_sports"
+                    android:textAllCaps="true"
+                    android:textColor="@color/surface"
+                    android:textSize="11sp"
+                    tools:text="@string/top_story_category_placeholder_sports" />
+
+                <!-- Separator -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:text="@string/meta_separator_dot"
+                    android:textColor="@color/surface" />
+
+                <!-- Time -->
+                <TextView
+                    android:id="@+id/story_source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.9"
+                    android:text="@string/top_story_time_placeholder"
+                    android:textColor="@color/surface"
+                    android:textSize="12sp"
+                    tools:text="6 hours ago" />
+            </LinearLayout>
+
+            <!-- Story Title -->
+            <TextView
+                android:id="@+id/story_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/display"
+                android:maxLines="3"
+                android:text="@string/top_story_title_placeholder"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="@string/top_story_title_placeholder" />
+        </LinearLayout>
+    </FrameLayout>
+</androidx.cardview.widget.CardView>

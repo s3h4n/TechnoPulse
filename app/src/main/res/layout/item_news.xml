@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/outline">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- News Image -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/news_image"
+            android:layout_width="128dp"
+            android:layout_height="90dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.None"
+            tools:src="@drawable/academic_top100_ranking" />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/news_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/inter"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLines="2"
+            android:textColor="@color/onSurface"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/news_image"
+            app:layout_constraintTop_toTopOf="@id/news_image"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="University Rises in Latest QS World Rankings..." />
+
+        <!-- Category -->
+        <TextView
+            android:id="@+id/news_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/inter"
+            android:textAllCaps="true"
+            android:textColor="@color/primary"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@id/news_image"
+            app:layout_constraintStart_toStartOf="@id/news_title"
+            app:layout_constraintTop_toBottomOf="@id/news_title"
+            tools:text="Academic" />
+
+        <!-- Separator -->
+        <TextView
+            android:id="@+id/dot_separator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:text="@string/news_item_meta_separator"
+            android:textColor="@color/muted"
+            app:layout_constraintBaseline_toBaselineOf="@id/news_category"
+            app:layout_constraintStart_toEndOf="@id/news_category" />
+
+        <!-- Date -->
+        <TextView
+            android:id="@+id/news_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter"
+            android:textColor="@color/muted"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/news_category"
+            app:layout_constraintStart_toEndOf="@id/dot_separator"
+            tools:text="Mar 15, 2025" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

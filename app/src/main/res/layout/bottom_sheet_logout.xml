@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Drag handle -->
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/logoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/display"
+        android:text="@string/logout_title"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <!-- Prompt -->
+    <TextView
+        android:id="@+id/logoutPrompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/inter"
+        android:text="@string/logout_prompt"
+        android:textAlignment="center"
+        android:textColor="@color/muted"
+        android:textSize="16sp" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <!-- Cancel -->
+        <Button
+            android:id="@+id/btnCancelLogout"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:text="@string/logout_button_cancel"
+            android:textAllCaps="true" />
+
+        <!-- Confirm -->
+        <Button
+            android:id="@+id/btnConfirmLogout"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:text="@string/logout_button_confirm"
+            android:textAllCaps="true" />
+    </LinearLayout>
+</LinearLayout>
